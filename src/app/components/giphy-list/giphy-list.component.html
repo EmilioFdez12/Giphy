@@ -1,0 +1,41 @@
+<div class="container">
+  <!-- Loader -->
+  @if (loading) {
+    <div class="loader">Loading...</div>
+  }
+
+  <!-- GIF Grid -->
+  @if (!loading) {
+    <div class="gif-grid">
+      @for (gif of gifs | paginate: {
+        itemsPerPage: itemsPerPage,
+        currentPage: currentPage,
+        totalItems: totalGifs,
+        id: 'gifs-pagination'
+      }; track gif.id) {
+        <div class="gif-card bg-primary">
+          <a [href]="gif.url" target="_blank">
+            <img [src]="gif.images.fixed_height.url" [alt]="gif.title || 'GIF image'" />
+          </a>
+          <div class="gif-title">{{ gif.title }}</div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Paginación -->
+  @if (totalGifs > 0) {
+    <div class="pagination-container">
+      <pagination-controls
+        [previousLabel]="'Anterior'"
+        [nextLabel]="'Siguiente'"
+        [responsive]="true"
+        (pageChange)="pageChanged($event)"
+        [id]="'gifs-pagination'"
+        [maxSize]="7"
+        [directionLinks]="true"
+        [autoHide]="true">
+      </pagination-controls>
+    </div>
+  }
+</div>

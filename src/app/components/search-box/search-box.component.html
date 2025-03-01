@@ -1,0 +1,15 @@
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-10">
+      <div class="input-group">
+        <input type="text" class="form-control" #txtBuscaGif placeholder="Nombre del Gif"
+          (keyup.enter)="buscarGif(txtBuscaGif.value)">
+      </div>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary" type="button" (click)="buscarGif(txtBuscaGif.value)">
+        <i class="bi bi-search"></i> Buscar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="category-buttons">
+  @for (category of categories; track category) {
+    <button
+      class="btn"
+      [class.btn-primary]="giphyService.lastSearchTerm === category || (category === 'trending' && !giphyService.lastSearchTerm)"
+      [class.btn-outline-primary]="giphyService.lastSearchTerm !== category"
+      (click)="searchCategory(category)">
+      {{ category | titlecase }}
+    </button>
+  }
+</div>
